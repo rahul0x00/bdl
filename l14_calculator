@@ -1,0 +1,103 @@
+
+Module 14 Lab: AWS Pricing Calculator
+Lab overview
+
+In this lab, you will use the AWS Pricing Calculator to estimate the cost of using Amazon Web Services (AWS) services based on the following scenario:
+
+    You would like to run an Amazon Elastic Compute Cloud (Amazon EC2) Linux instance for an average of 8 hours per day, 7 days per week in the us-west-2 Region. You want to use the t2.medium instance type, and you don't want to pay any upfront costs for the instance.
+
+    You would also like to store 60 GB of data in an Amazon Simple Storage Service (Amazon S3) bucket in the us-west-2 Region by using the S3 Standard storage class. You anticipate 100 requests per month to access the data from the internet.
+
+You will use the Pricing Calculator to choose a service and then configure the service. You will create an estimate that accounts for the use of multiple AWS services. As you add and configure different services, the upfront cost, monthly cost, and total 12 month cost estimate will be displayed at the bottom of the screen.
+Duration
+
+This lab requires approximately 15 minutes to complete.
+Lab steps
+
+Note: For this lab, you do not need to choose Start Lab in the lab environment. You can use the Pricing Calculator without accessing the AWS Management Console.
+
+    Navigate to the Pricing Calculator, and choose Create estimate.
+
+    To create the Amazon EC2 cost estimate, configure the following options:
+
+        Keep Search by location type selected.
+
+        For Choose a location type, choose Region.
+
+        For Choose a Region, choose US West (Oregon). 
+
+        For Find Service, enter ec2, and then in the list of filtered results, in the Amazon EC2 box, choose Configure.
+
+    In the Configure Amazon EC2 window, configure the following options:
+
+        For Description, enter on-demand EC2 instance.
+
+        For Operating system, choose Linux.
+
+        For Number of instances, enter 1.
+
+        For Search instance type, enter t2.medium, and from the list of filtered results, select this instance type.
+
+        Tip: After you search for the instance type, you might need to scroll down to see and select it.
+
+        In the Payment options section, choose On-Demand, and then configure the following options:
+
+            For Usage, enter 8.
+
+            For Usage type, choose Hours / Day.
+
+            Choose Save and add service.
+
+        Notice that the Upfront cost is 0.00 USD because you chose the on-demand payment option. Also notice that the Monthly cost and Total 12 months cost now include the estimated cost of running the EC2 instance based on the details you provided.
+
+    To create the Amazon S3 cost estimate, in the Find Service search area, enter S3, and then in the list of filtered results, in the Amazon Simple Storage Service (S3) box, choose Configure.
+
+    In the Configure Amazon Simple Storage Service (S3) window, configure the following options:
+
+        For Description, enter data storage.
+
+        For Select S3 Storage classes and other features, keep both S3 Standard and Data Transfer selected.
+
+        For S3 Standard storage, enter 60, and for Unit, choose GB per month.
+
+        For How will data be moved into S3 Standard? keep The specified amount of data is already stored in S3 Standard selected.
+
+        For GET, SELECT, and all other requests from S3 Standard, enter 100.
+
+        In the Data Transfer section, for Outbound Data Transfer, configure the following options:
+
+            For Data transfer to, choose Internet. 
+
+            For Enter Amount, enter 3.
+
+            For Data amount, choose GB per month.
+
+        Choose Save and add service.
+
+    Choose View summary. 
+
+    Notice that you now have two line items in your estimate. One line shows the cost for the EC2 instance, and the other line shows the cost for the Amazon S3 storage. 
+
+    To add the cost of a Basic Support plan to the estimate, choose Add support.
+
+    On the Support estimate page, configure the following options:
+
+        For Description, enter basic support.
+
+        Keep the other default options, including Basic support plan.
+
+        Tip: Notice the price differences between the different support plans that are listed.
+
+        Choose Add to my estimate.
+
+    Notice that the estimated cost of the Basic support plan added 0.00 USD to the total cost estimate. If you had chosen a higher level of support, there would be a cost associated with it.
+
+    To export the estimate, for Export, choose the format that you prefer. For example, choose PDF. 
+
+    In the dialog box that appears, choose OK.
+
+    You also have the option to save the estimate to your computer.
+
+ 
+
+As you can see, the Pricing Calculator offers a set of features that you can use to create an estimate for the cost of your AWS services when you know which services you will use and how you plan to use them.
