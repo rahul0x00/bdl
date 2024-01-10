@@ -1,0 +1,143 @@
+Module 12 Lab: Using Elastic Beanstalk and CloudFormation
+Lab overview
+
+In this lab, you will create an application using AWS Elastic Beanstalk. You will also use a template and AWS CloudFormation to build a Virtual Private Cloud (VPC).
+Duration
+
+This lab requires approximately 45 minutes to complete.
+Access the AWS Management Console
+
+    To start the lab session, choose Start Lab in the upper-right corner of the page.
+
+        The lab session starts.
+
+        A timer displays in the upper-right corner of the page and shows the time remaining in the session.
+
+        Tip: To refresh the session length at any time, choose Start Lab again before the timer reaches 0:00.
+
+    Before continuing, wait until the lab environment is ready. The environment is ready when the lab details appear on the right side of the page and the circle icon next to the AWS link in the upper-left corner turns green.
+
+    To return to these instructions, choose the Readme link in the upper-right corner.
+
+    To connect to the AWS Management Console, choose the AWS link in the upper-left corner, above the terminal window.
+
+    A new browser tab opens and connects you to the AWS Management Console.
+
+    Tip: If a new browser tab does not open, a banner or icon is usually at the top of your browser with the message that your browser is preventing the site from opening pop-up windows. Choose the banner or icon, and then choose Allow pop-ups.
+
+    Note: You are using the console through the lab environment, so you are not incurring any actual costs. However, in the real world, when using a personal or business account to access the console, users incur charges for use of specific AWS services.
+
+Task 1. Deploy an application using Elastic Beanstalk
+
+    Choose the Services menu, locate the Compute services, and choose Elastic Beanstalk.
+
+    Choose Create Application.
+
+    For Application name, enter a name for your application; for example, MyLabApp
+
+    For Platform, select PHP.
+
+    For Application code, select Sample application.
+
+    Choose Next.
+
+    Under Existing service roles choose the drop-down and select EMR_EC2_DefaultRole.
+
+    Under EC2 key pair choose the drop-down and select vockey.
+
+    Under EC2 instance profile choose the drop-down and select EMR_EC2_DefaultRole.
+
+    Choose Next.
+
+    Under VPC select the available VPC.
+
+    Under Public IP address select Activated.
+
+    Under Instance subnets select at least two.
+
+    Choose Next.
+
+    Under EC2 Security groups select the default.
+
+    Choose Next.
+
+    Under Health reporting choose Basic.
+
+    Under Managed updates de-select Activated.
+
+    Choose Next.
+    Choose Submit.
+
+Watch the console as Elastic Beanstalk creates and runs the necessary resources to run the application. It takes 5-10 minutes for the process to complete.
+
+Elastic Beanstalk creates an Amazon Simple Storage Service (Amazon S3) storage bucket and a security group, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and runs the code.
+
+When complete, the screen changes to show the newly created environment. It is ready for you to upload a PHP application.
+
+    Open a new browser tab or window. Navigate to the AWS Tutorials and Samples web page.
+
+    On the page, in the second list of downloads, find PHP – php.zip. Download the sample PHP application to your computer.
+
+    You should now have a file called php.zip.
+
+    Return to the Elastic Beanstalk console tab.
+
+    Choose Upload and deploy.
+
+    Choose Choose file, navigate to and select the php.zip file that you downloaded, and choose Open.
+
+    Choose Deploy.
+
+    The application deploys to the environment using all of the cloud resources Elastic Beanstalk provisioned.
+
+    To see your PHP website, in the left navigation pane, choose Go to environment.
+
+    The web application opens in a new tab.
+
+Task 2. Deploy an application using CloudFormation
+
+    Return to the AWS Management Console tab.
+
+    Choose the Services menu, locate the Compute services, and choose EC2.
+
+    In th left navigation pane, under Network & Security, choose Key Pairs.
+
+    Choose Create key pair.
+
+    For Name, enter CFLearner
+
+    Choose Create key pair.
+
+    When the download window opens, choose Cancel. You do not need to download the file.
+
+    Choose the Services menu, locate the Management & Governance services, and choose CloudFormation.
+
+    The Stacks list appears and displays the CloudFormation stacks that were created in your lab environment. Notice the stack whose Description says AWS Elastic Beanstalk environment. This stack was created automatically when you deployed your application through Elastic Beanstalk.
+
+    This demonstrates how the two services work together to create an environment to run your code.
+
+    Choose Create stack, and then choose With new resources (standard).
+
+    In the Prerequisite section, choose Use a sample template.
+
+    In the Select a sample template section, select WordPress blog.
+
+    WordPress is web software that you can use to create a website or blog. This template installs a highly available and scalable WordPress deployment using an Amazon Relational Database Service (Amazon RDS) database instance for storage.
+
+    Select Next.
+
+    For Stack name, enter WordPressStack
+
+    In the Parameters section, configure the following:
+
+    DBPassword: Enter Testing1
+    DBUser: Enter testadmin
+    KeyName: Choose the CFLearner key pair
+
+    Choose Next, and then choose Next again.
+
+    You will use the default stack options.
+
+    Review the stack configuration, and then choose Submit.
+
+    This initiates the deployment of the resources. You can watch the CloudFormation stack events on the Events tab as a complete WordPress site is created.
